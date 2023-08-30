@@ -62,4 +62,21 @@ module Focalinc
       parsed_email['comentrio_do_cliente'].split("\n-").first
     end
   end
+
+  class F1SalesCustom::Hooks::Lead
+    class << self
+      def switch_source(lead)
+        @lead = lead
+        return "#{lead_source} - Focal" if Lead.count.even?
+
+        "#{lead_source} - Lopes"
+      end
+
+      private
+
+      def lead_source
+        @lead.source.name
+      end
+    end
+  end
 end
