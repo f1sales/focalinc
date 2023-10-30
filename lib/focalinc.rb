@@ -67,9 +67,9 @@ module Focalinc
     class << self
       def switch_source(lead)
         @lead = lead
-        return "#{lead_source} - Lopes" if (Lead.count % 3).zero?
+        return "#{lead_source} - Focal" if Lead.count.even?
 
-        "#{lead_source} - Focal"
+        "#{lead_source} - Lopes"
       end
 
       private
